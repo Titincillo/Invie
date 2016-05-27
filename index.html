@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<title>Inivie - tus mejores guitarras!!</title>
 	<meta charset="UTF-8">
-		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/invie.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 <body>
 	<section id="portada" class="portada background">
@@ -12,7 +13,8 @@
 			<figure class="logotipo">
 				<img src="images/invie.png" width="150px"  alt="Invie logotipo">
 			</figure>
-			<nav class="menu">
+			<span class="burguer-button icon-menu" id="burguer-button"></span>
+			<nav class="menu" id="menu">
 				<ul>
 					<li>
 						<a href="index.html"> Home</a> 
@@ -101,6 +103,35 @@
 			</form>
 		</div>		
 	</footer>
+	<script>
+		var consulta = window.matchMedia('(max-width: 500px)');
+		consulta.addListener(mediaQuery);
+
+		var $burguerButton = document.getElementById('burguer-button');
+		var $menu = document.getElementById('menu');
+		function toogleMenu() {
+				$menu.classList.toggle('active');
+		};
+		
+		function mediaQuery() {
+			if(consulta.matches){
+				console.log('se cumplio la condicion');
+				$burguerButton.addEventListener('touchstart', toogleMenu);
+
+			}
+			else{
+				$burguerButton.removeEventListener('touchstart', toogleMenu);
+				console.log('No se cumplio la condicion');
+			}
+			
+		}
+		mediaQuery();
+
+		
+		
+
+		
+	</script>
 			
 </body>
 </html>
